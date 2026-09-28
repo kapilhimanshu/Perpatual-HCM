@@ -1092,6 +1092,26 @@ window.addEventListener('DOMContentLoaded',()=>{
   changeLanguage(selector?selector.value:'en');
 });
 </script>
+  <div id="demo-modal" class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-title" hidden>
+  <div class="demo-modal__box">
+    <button type="button" class="demo-modal__close" aria-label="Close">&times;</button>
+    <h2 id="demo-title">Book a Demo</h2>
+    <p>Call us for a demo<br><a href="tel:+919999191618">+91 9999191618</a></p>
+    <p>Or send an email to<br><a href="mailto:hr@perpatual.com?subject=Demo%20Request">hr@perpatual.com</a></p>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('demo-modal');
+  function open(){modal.hidden=false;document.body.style.overflow='hidden'}
+  function close(){modal.hidden=true;document.body.style.overflow=''}
+  document.addEventListener('click',function(e){
+    if(e.target.closest('.js-book-demo')){e.preventDefault();open()}
+    else if(e.target.closest('.demo-modal__close')||e.target===modal){close()}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close()});
+})();
+</script>
 <script>
 const data={
  employee:{left:['What employees feel','Clear, connected and easy to navigate.','Joining, leave, letters, reviews and support feel like one workplace — not a maze of modules.'],right:['What HR gains','Consistency without constant intervention.',['Fewer “where do I go?” questions','Clear self-service with controlled exceptions','A more consumer-like workplace experience']]},
